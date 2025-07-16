@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Phishing Awareness | Tech Vlog</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #141e30, #243b55, #1f4037, #99f2c8);
+      background-size: 400% 400%;
+      animation: gradientBG 10s ease infinite;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 20px;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .hero-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .animated-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.7rem;
+      background: linear-gradient(to right, #00f7ff, #ff00c8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glowText 1.5s infinite alternate;
+    }
+
+    @keyframes glowText {
+      from {
+        text-shadow: 0 0 5px #00f7ff;
+      }
+      to {
+        text-shadow: 0 0 20px #ff00c8;
+      }
+    }
+
+    .subtitle {
+      font-size: 1rem;
+      color: #ccc;
+      margin-top: 10px;
+    }
+
+    .typewriter {
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 2px solid #fff;
+      width: 0;
+      animation: typing 5s steps(50, end) forwards;
+    }
+
+    @keyframes typing {
+      to {
+        width: 100%;
+      }
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: center;
+      width: 100%;
+      max-width: 1000px;
+    }
+
+    .form-box, .preview-box {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(16px);
+      border-radius: 20px;
+      padding: 25px 30px;
+      width: 100%;
+      max-width: 380px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      animation: fadeIn 1s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .form-box:hover, .preview-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 40px rgba(255, 255, 255, 0.2);
+    }
+
+    h2, h3 {
+      margin-bottom: 20px;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.07);
+      padding: 20px;
+      border-radius: 15px;
+      margin-bottom: 20px;
+      box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.1);
+      animation: pulseBox 2s infinite alternate;
+    }
+
+    @keyframes pulseBox {
+      from {
+        box-shadow: inset 0 0 5px rgba(255,255,255,0.1);
+      }
+      to {
+        box-shadow: inset 0 0 20px rgba(255,255,255,0.2);
+      }
+    }
+    .info-box {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  padding: 25px 30px;
+  border-radius: 20px;
+  max-width: 800px;
+  width: 100%;
+  margin-top: 50px;
+  animation: fadeIn 1.5s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease;
+}
+
+.info-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 40px rgba(255, 255, 255, 0.15);
+}
+
+.info-box h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.8rem;
+  background: linear-gradient(to right, #00f7ff, #ff00c8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glowText 1.5s infinite alternate;
+}
+
+.info-box p {
+  font-size: 15px;
+  color: #ddd;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+
+    input {
+      padding: 12px 15px;
+      border: none;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      font-size: 15px;
+      outline: none;
+    }
+
+    input::placeholder {
+      color: #ccc;
+    }
+    
+    .info-box h3 {
+  font-size: 1.2rem;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #00eaff;
+}
+
+.info-box ul {
+  list-style-type: "✅ ";
+  margin-left: 20px;
+  margin-bottom: 15px;
+}
+
+.info-box code {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 2px 6px;
+  border-radius: 5px;
+  font-family: monospace;
+  color: #f8f8f8;
+}
+ #urlInput {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+#urlInput::placeholder {
+  color: #ccc;
+}
+.social-links {
+  list-style: none;
+  padding: 0;
+  margin-top: 15px;
+}
+
+.social-links li {
+  margin-bottom: 8px;
+  font-size: 15px;
+}
+
+.social-links a {
+  color: #00eaff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #ff00c8;
+  text-decoration: underline;
+}
+
+.resource-links {
+  list-style: none;
+  margin-top: 10px;
+  padding-left: 0;
+}
+
+.resource-links li {
+  margin-bottom: 8px;
+  font-size: 15px;
+}
+
+.resource-links a {
+  color: #00eaff;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.resource-links a:hover {
+  color: #ff00c8;
+  text-decoration: underline;
+}
+
+
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(0, 118, 255, 0.6);
+    }
+
+    p {
+      font-size: 14px;
+      margin: 10px 0;
+      color: #ddd;
+    }
+
+    footer {
+      margin-top: 50px;
+      text-align: center;
+      color: #888;
+      font-size: 13px;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .form-box, .preview-box {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="hero-header">
+    <h1 class="animated-title">⚠️ Phishing Awareness Demo</h1>
+    <p class="subtitle typewriter">Learn how attackers exploit login forms...</p>
+  </div>
+
+  <div class="container">
+    <div class="form-box">
+      <h2>Login Simulation</h2>
+      <div class="input-group">
+        <input type="email" id="email" placeholder="Your Email" />
+        <input type="password" id="password" placeholder="Your Password" />
+      </div>
+      <button onclick="fakeSubmit()">Simulate Login</button>
+    </div>
+    
+    <div class="info-box">
+  <h2>📝 About This Project</h2>
+  <p>
+    This project has been developed solely for educational and awareness purposes.  
+    It illustrates how phishing techniques work by simulating a fake login page,  
+    helping users learn how to identify and avoid such online threats.
+  </p>
+</div>
+
+    
+    
+<div class="info-box">
+  <h2>🚨 Real Phishing Link Examples</h2>
+
+  <h3>1️⃣ Facebook Fake Login</h3>
+  <p><strong>Fake Link:</strong> <code>https://facebo0k-login-help.com/login</code></p>
+  <p><strong>Why it's fake:</strong> Domain spelling mistake (facebo0k ≠ facebook), non-official URL.</p>
+
+  <h3>2️⃣ PayPal Phishing Portal</h3>
+  <p><strong>Fake Link:</strong> <code>https://secure-paypal-verification-update.site</code></p>
+  <p><strong>Why it's fake:</strong> Tries to look "secure" using keywords, but domain is not official.</p>
+
+  <p><strong>🛡️ Tip:</strong> Always verify URLs. Official domains will be simple and clear like <code>paypal.com</code>, <code>facebook.com</code>.</p>
+</div>
+
+
+<div class="info-box">
+  <h2>🎯 How Phishing Attacks Work</h2>
+  <p>
+    Phishing is a type of cyber attack where an attacker tricks the user into giving away sensitive information (such as email, password, OTP) through a fake website or email.
+  </p>
+  
+  <h3>🔗 How Phishing Links are Created?</h3>
+  <ul>
+    <li>The attacker creates a fake website that looks identical to the original one.</li>
+    <li>Then they send the link to the website through various channels—such as email, chat, Facebook, Instagram, WhatsApp.</li>
+    <li>The user mistakenly thinks it's a legitimate link and enters their personal information.</li>
+  </ul>
+
+  <h3>🧠 Behind the Scene – How the Attacker Views the Data?</h3>
+  <ul>
+    <li>When the user submits their credentials on the fake login page, that data is sent to the attacker's server or script.</li>
+    <li>The attacker logs that data—such as the email, password, IP address, and browser information.</li>
+    <li>In many cases, GeoLocation is also collected along with other data.</li>
+  </ul>
+
+  <h3>🛡️ How to Stay Safe?</h3>
+  <ul>
+    <li>Before clicking any link, check if it starts with: <code>https://</code>.</li>
+    <li>Verify the spelling of the URL – small spelling mistakes can indicate a fake site.</li>
+    <li>Always enable 2FA (Two-Factor Authentication) on all your accounts.</li>
+    <li>If your browser or app warns you, don't ignore it.</li>
+  </ul>
+</div>
+
+<div class="info-box">
+  <h2>📚 Learn More About Phishing</h2>
+  <p>Here are some helpful videos and books to better understand phishing and protect yourself online:</p>
+
+  <h3>📺 Recommended YouTube Videos</h3>
+  <ul class="resource-links">
+    <li><a href="https://youtu.be/u9dBGWVwMMA?si=59Nox8hzMQK4Hef1" target="_blank">🔹 What is Phishing?</a></li>
+    <li><a href="https://www.youtube.com/watch?v=Q8xz8xKEFvU" target="_blank">🔹 Social Engineering & Phishing Explained (by Techquickie)</a></li>
+    <li><a href="https://youtu.be/OKNsemnOmwY?si=WOcYO18xIiChuqO7" target="_blank">🔹 Real Phishing Attack Simulation (Educational)</a></li>
+  </ul>
+
+  <h3>📘 Suggested Books</h3>
+  <ul class="resource-links">
+    <li>🔹 <strong>The Art of Deception</strong> by Kevin Mitnick</li>
+    <li>🔹 <strong>Phishing Dark Waters</strong> by Christopher Hadnagy</li>
+    <li>🔹 <strong>Cybersecurity For Beginners</strong> by Raef Meeuwisse</li>
+  </ul>
+</div>
+
+
+<div class="info-box">
+  <h2>📬 Connect With Me</h2>
+  <p>You can reach me or follow my work through the platforms below:</p>
+
+  <ul class="social-links">
+    <li><strong>Email:</strong> <a href="tohidul07890@gmail.com">tohidul07890@gmail.com</a></li>
+    <li><strong>GitHub:</strong> <a href="https://github.com/Nahid-mahmud555" target="_blank">github.com/Nahid-mahmud555</a></li>
+    <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/nahid-mahmud-py" target="_blank">linkedin.com/in/nahid-mahmud-py</a></li>
+    <li><strong>Facebook:</strong> <a href="https://facebook.com/ARE.YOU.SAFE.OR.NOT" target="_blank">facebook.com/ARE.YOY.SAFE.OR.NOT</a></li>
+  </ul>
+</div>
+
+
+
+
+    <div class="preview-box" id="preview" style="display: none;">
+      <h3>What a Hacker Might See</h3>
+      <p><strong>Email:</strong> <span id="emailPreview">-</span></p>
+      <p><strong>Password:</strong> <span id="passwordPreview">-</span></p>
+      <p><strong>IP Address:</strong> <span id="ipPreview">-</span></p>
+      <p><strong>Country:</strong> <span id="countryPreview">-</span></p>
+      <p><strong>City:</strong> <span id="cityPreview">-</span></p>
+    </div>
+  </div>
+  
+  <div class="info-box">
+  <h2>🔍 Link Safety Checker</h2>
+  <p>Enter any URL below to check if it's safe or potentially a phishing link:</p>
+  <input type="text" id="urlInput" placeholder="e.g. https://facebo0k-login.com" />
+  <button onclick="checkLink()">Check Link</button>
+  <p id="linkResult" style="margin-top:15px;"></p>
+</div>
+
+
+  <footer>
+    <p>© 2025 NAHID_MAHMUD | Educational Purpose Only</p>
+  </footer>
+
+  <script>
+    function fakeSubmit() {
+      const email = document.getElementById("email").value.trim();
+      const pass = document.getElementById("password").value.trim();
+
+      if (email === "" || pass === "") {
+        alert("Please enter both email and password.");
+        return;
+      }
+
+      document.getElementById("preview").style.display = "block";
+
+      document.getElementById("emailPreview").textContent = email;
+      document.getElementById("passwordPreview").textContent = pass;
+      document.getElementById("ipPreview").textContent = generateRandomIP();
+
+      const location = getRandomLocation();
+      document.getElementById("countryPreview").textContent = location.country;
+      document.getElementById("cityPreview").textContent = location.city;
+
+      alert("Simulation complete! This is just for awareness.");
+    }
+
+    function generateRandomIP() {
+      return Array.from({ length: 4 }, () => Math.floor(Math.random() * 256)).join('.');
+    }
+
+    function getRandomLocation() {
+      const locations = [
+        { country: "USA", city: "New York" },
+        { country: "India", city: "Delhi" },
+        { country: "Bangladesh", city: "Dhaka" },
+        { country: "Germany", city: "Berlin" },
+        { country: "UK", city: "London" },
+        { country: "Canada", city: "Toronto" },
+        { country: "Australia", city: "Sydney" },
+        { country: "Brazil", city: "Rio de Janeiro" },
+        { country: "Russia", city: "Moscow" },
+        { country: "Japan", city: "Tokyo" }
+      ];
+
+      return locations[Math.floor(Math.random() * locations.length)];
+    }
+    function checkLink() {
+  const url = document.getElementById("urlInput").value.trim();
+  const result = document.getElementById("linkResult");
+
+  if (url === "") {
+    result.innerHTML = "⚠️ Please enter a URL to check.";
+    result.style.color = "#ffcc00";
+    return;
+  }
+
+  // List of trusted domains (safe)
+  const trustedDomains = ["facebook.com", "google.com", "github.com", "paypal.com"];
+  
+  // Common phishing red flags
+  const suspiciousPatterns = ["login", "verify", "secure", "update", "account", "help", "support"];
+  const cheapTLDs = [".xyz", ".cf", ".ml", ".tk", ".gq"];
+
+  let safe = false;
+  let issues = [];
+
+  try {
+    const parsedUrl = new URL(url);
+    const hostname = parsedUrl.hostname;
+
+    // Check if it's a trusted domain
+    for (const domain of trustedDomains) {
+      if (hostname === domain || hostname.endsWith("." + domain)) {
+        safe = true;
+        break;
+      }
+    }
+
+    // Check suspicious keywords
+    for (const pattern of suspiciousPatterns) {
+      if (hostname.toLowerCase().includes(pattern)) {
+        issues.push(`Contains suspicious keyword: "${pattern}"`);
+      }
+    }
+
+    // Check for cheap domain endings
+    for (const tld of cheapTLDs) {
+      if (hostname.endsWith(tld)) {
+        issues.push(`Uses risky domain ending: "${tld}"`);
+      }
+    }
+
+    if (parsedUrl.protocol !== "https:") {
+      issues.push("Does not use HTTPS");
+    }
+
+    // Final output
+    if (safe && issues.length === 0) {
+      result.innerHTML = "✅ This link appears to be safe.";
+      result.style.color = "#00ff99";
+    } else {
+      result.innerHTML = "⚠️ This link may be suspicious.<br><strong>Issues Found:</strong><br>" + issues.join("<br>");
+      result.style.color = "#ff5555";
+    }
+
+  } catch (e) {
+    result.innerHTML = "❌ Invalid URL format. Please check the link again.";
+    result.style.color = "#ff4444";
+  }
+}
+
+    
+  </script>
+</body>
+</html>
